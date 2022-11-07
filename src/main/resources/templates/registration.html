@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добрались до регистрации</title>
+</head>
+<body>
+<p th:text="'Здесь будет страница регистрации'"></p>
+<br/>
+<div>
+
+    <form th:method="POST" th:action="@{/user/new}" th:object="${user}">
+        <label for="firstName">Введите имя: </label> <br/>
+        <input type="text" th:field="*{firstName}" id="firstName"><br/>
+        <div style="color: red;" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+        <label for="lastName">Введите фамилию: </label><br/>
+        <input type="text" th:field="*{lastName}" id="lastName"><br/>
+        <div style="color: red;" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+        <label for="patronymic">Введите отчество: </label><br/>
+        <input type="text" th:field="*{patronymic}" id="patronymic"><br/>
+        <label for="age">Введите возраст: </label><br/>
+        <input type="text" th:field="*{age}" id="age"><br/>
+        <div style="color: red;" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+        <label for="email">Введите адрес электронной почты: </label><br/>
+        <input type="text" th:field="*{email}" id="email"><br/>
+        <div style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        <label for="phone">Введите номер телефона: </label><br/>
+        <input type="text" th:field="*{phone}" id="phone"><br/>
+        <div style="color: red;" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+        <input type="submit" value="Send">
+    </form>
+</div>
+<br/>
+<a th:href="@{/user/start}" th:text="'На главную'"></a>
+</body>
+</html>
